@@ -1,0 +1,7 @@
+---
+- name: Configure OSPF
+  ios_config:
+    username: cisco
+    password: cisco
+    host: "{{ inventory_hostname }}"
+    src: "./configs/{{inventory_hostname}}.cfg"

@@ -1,0 +1,16 @@
+---
+- name: Generate router configuration files
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  roles:
+    - generate_config
+
+- name: Configure IP Address, DHCP Server, OSPF
+  hosts: all
+  connection: local
+  gather_facts: false
+
+  roles:
+    - configure
