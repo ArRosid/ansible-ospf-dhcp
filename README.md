@@ -1,3 +1,4 @@
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/arrosid/netconf-static-route)
 # Ansible Playbook for DHCP & OSPF Automation on Cisco IOS
 Configure IP Address, DHCP Server and OSPF automatically using Ansible
 
