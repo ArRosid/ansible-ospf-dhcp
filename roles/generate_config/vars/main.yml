@@ -1,58 +1,55 @@
 ---
 core_routers:
-  - { hostname: 192.168.122.11,
-      ip_g2: 10.10.12.1,
-      netmask_g2: 255.255.255.0,
-      desc_g2: To CSR-2,
-      ip_g3: 10.10.13.1,
-      netmask_g3: 255.255.255.0,
-      desc_g3: To CSR-3,
-      ip_g4: 192.168.1.1,
-      netmask_g4: 255.255.255.0,
-      desc_g4: To Client,
-      pool: network1,
-      network_pool: 192.168.1.0 255.255.255.0,
-      gateway_pool: 192.168.1.1,
-      dns_pool: 8.8.8.8,
-      ospf_network: [10.10.12.0 0.0.0.255,
-                    10.10.13.0 0.0.0.255,
-                    192.168.1.0 0.0.0.255],
-      ospf_id: 1 }
+  - hostname: 192.168.1.2
+    interfaces:
+      - intf: se0/0
+        ip: 10.10.10.6 255.255.255.252
+      - intf: fa0/1
+        ip: 192.168.2.1 255.255.255.0
+    dhcp:
+      pool: network2
+      network: 192.168.2.0 255.255.255.0
+      gateway: 192.168.2.1
+      dns: 8.8.8.8
+    ospf:
+      id: 1
+      network:
+        - 192.168.2.0 0.0.0.255 area 0
+        - 10.10.10.4 0.0.0.3 area 0
 
-  - { hostname: 192.168.122.12,
-      ip_g2: 10.10.12.2,
-      netmask_g2: 255.255.255.0,
-      desc_g2: To CSR-1,
-      ip_g3: 10.10.23.2,
-      netmask_g3: 255.255.255.0,
-      desc_g3: To CSR-3,
-      ip_g4: 192.168.2.1,
-      netmask_g4: 255.255.255.0,
-      desc_g4: To Client,
-      pool: network2,
-      network_pool: 192.168.2.0 255.255.255.0,
-      gateway_pool: 192.168.2.1,
-      dns_pool: 8.8.8.8,
-      ospf_network: [10.10.12.0 0.0.0.255,
-                    10.10.23.0 0.0.0.255,
-                    192.168.2.0 0.0.0.255],
-      ospf_id: 1 }
+  - hostname: 192.168.1.3
+    interfaces:
+      - intf: se0/0
+        ip: 10.10.10.1 255.255.255.252
+      - intf: fa0/1
+        ip: 192.168.3.1 255.255.255.0
+    dhcp:
+      pool: network3
+      network: 192.168.3.0 255.255.255.0
+      gateway: 192.168.3.1
+      dns: 8.8.8.8
+    ospf:
+      id: 1
+      network:
+        - 192.168.3.0 0.0.0.255 area 0
+        - 10.10.10.0 0.0.0.3 area 0
 
-  - { hostname: 192.168.122.13,
-      ip_g2: 10.10.23.3,
-      netmask_g2: 255.255.255.0,
-      desc_g2: To CSR-2,
-      ip_g3: 10.10.13.3,
-      netmask_g3: 255.255.255.0,
-      desc_g3: To CSR-1,
-      ip_g4: 192.168.3.1,
-      netmask_g4: 255.255.255.0,
-      desc_g4: To Client,
-      pool: network3,
-      network_pool: 192.168.3.0 255.255.255.0,
-      gateway_pool: 192.168.3.1,
-      dns_pool: 8.8.8.8,
-      ospf_network: [10.10.13.0 0.0.0.255,
-                    10.10.23.0 0.0.0.255,
-                    192.168.3.0 0.0.0.255],
-      ospf_id: 1 }
+  - hostname: 192.168.1.5
+    interfaces:
+      - intf: se0/0
+        ip: 10.10.10.2 255.255.255.252
+      - intf: se0/1
+        ip: 10.10.10.5 255.255.255.252
+      - intf: fa0/1
+        ip: 192.168.5.1 255.255.255.0
+    dhcp:
+      pool: network5
+      network: 192.168.5.0 255.255.255.0
+      gateway: 192.168.5.1
+      dns: 8.8.8.8
+    ospf:
+      id: 1
+      network:
+        - 192.168.5.0 0.0.0.255 area 0
+        - 10.10.10.4 0.0.0.3 area 0
+        - 10.10.10.0 0.0.0.3 area 0

@@ -1,24 +1,16 @@
-interface GigabitEthernet2
- description {{item.desc_g2}}
- ip address {{item.ip_g2}} {{item.netmask_g2}}
+{% for interface in item.interfaces %}
+interface {{interface.intf}}
+ ip address {{interface.ip}}
  no shutdown
 !
-interface GigabitEthernet3
- description {{item.desc_g3}}
- ip address {{item.ip_g3}} {{item.netmask_g3}}
- no shutdown
-!
-interface GigabitEthernet4
- description {{item.desc_g4}}
- ip address {{item.ip_g4}} {{item.netmask_g4}}
- no shutdown
-!
-ip dhcp pool {{item.pool}}
- network {{item.network_pool}}
- default-router {{item.gateway_pool}}
- dns-server {{item.dns_pool}}
+{% endfor %}
 
-router ospf {{ item.ospf_id }}
-{% for net in item.ospf_network %}
- network {{ net }} area 0
+ip dhcp pool {{item.dhcp.pool}}
+ network {{item.dhcp.network}}
+ default-router {{item.dhcp.gateway}}
+ dns-server {{item.dhcp.dns}}
+
+router ospf {{ item.ospf.id }}
+{% for net in item.ospf.network %}
+ network {{ net }}
 {% endfor %}
